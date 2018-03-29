@@ -1,6 +1,7 @@
 import React from 'react';
 import settings from './Settings';
 import speedToPace from './speedToPace';
+import { FormGroup, Label, Input, InputGroup, InputGroupAddon } from 'reactstrap';
 
 /**
  * Creates form with metric input that updates state
@@ -11,7 +12,7 @@ class CalcForm extends React.Component {
 
         // Get default speed from settings and assing it to state
         this.state = {
-            speed: settings.defaultSpeed,
+            speed: settings.defaults.speed
         };
     
         // Calculate initial pace from default speed
@@ -49,13 +50,16 @@ class CalcForm extends React.Component {
 
     render() {
         return (
-            <div>
+            <FormGroup>
                 <form onSubmit={this.handleSubmit}>
-                    <label>Speed (kp/h):</label>
-                    <input type="number" min="1" max="30" step="0.1" value={this.state.speed} onChange={this.handleChange} />
-                </form>
-                
-            </div>
+                    <Label>{this.props.unit}</Label>
+                    <InputGroup>
+                        <Input type="number" min="1" max="30" step="0.1" value={this.state.speed} onChange=
+                    {this.handleChange}/>
+                        <InputGroupAddon addonType="append">{this.props.metric}</InputGroupAddon>
+                    </InputGroup>
+                </form>  
+            </FormGroup>
         );
     }
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import { FormGroup, Label, Input, InputGroup, InputGroupAddon } from 'reactstrap';
 
 /**
  * Displays results of given metric
@@ -6,7 +7,13 @@ import React from 'react';
 class Results extends React.Component {
     render() {
         return (
-            <p>{this.props.unit}: {this.props.value} {this.props.metric}</p>
+            <FormGroup>
+                <Label>{this.props.unit}</Label>
+                <InputGroup>
+                    <Input type="text" value={this.props.value} disabled/>
+                    <InputGroupAddon addonType="append">{this.props.metric}</InputGroupAddon>
+                </InputGroup>
+            </FormGroup>
         );
     }
 }

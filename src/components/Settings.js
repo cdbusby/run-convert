@@ -2,5 +2,12 @@
  * Default app settings
  */
 export default {
-    defaultSpeed: 12
+    // App settings
+    appName: 'run-convert',
+    appVersion: '0.1.0',
+
+    // Defaults
+    defaults: {
+        speed: 12
+    }
 }
